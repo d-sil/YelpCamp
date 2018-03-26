@@ -13,9 +13,9 @@ var express        = require("express"),
 var indexRoutes      = require("./routes/index"),
     commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds");
-    
-mongoose.connect(process.env.DATABASEURL); //("mongodb://localhost/yelp_camp"); // local db connection on c9
-//mongoose.connect("mongodb://david:harley@ds123929.mlab.com:23929/yelpcamp"); // hosted db connection on mLab
+
+var url = process.env.DATABASEURL || "mongodb://localhost"    
+mongoose.connect(process.env.DATABASEURL);  // we exported the 'DATABASEURL' locally here on c9, and also on heroku with our different db from 'mLab'
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
