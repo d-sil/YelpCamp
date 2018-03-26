@@ -1,0 +1,83 @@
+body {
+  background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;  /* x & y positions items left-right, and up-down. z is the 3rd dimension. z positions items forwards and backwards into space. z: 1 is the most forward, 0 is the most backward */
+  position: relative;  /* 'static' is the default position setting. 'static' would ignore the z index. */
+  text-align: center;  /* centers horizontally*/
+  padding-top: 40vh;  /* 'view height' centers items vertically on the page. '40vh' seems to be the perfect amount in this instance. */
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;  /* places images behind the other content */
+  list-style: none;  /* removes bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;  /* allows images to take up entire page */
+  background-position: 50% 50%;  /* centers image */
+  background-repeat: no-repeat;  /* this way the images won't repeat vertically or horizontally */
+  opacity: 0;  /* we want our images to begin faded out before we use our animation */
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; /* 'imageAnimation' is an arbitrary name. it just has to match up with our animation below. 
+  our animation last 50 seconds. linear means at the same speed. and the slideshow never stops. */
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation {   /* 100% is 50 seconds (every 10% is 5 seconds).  */
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
