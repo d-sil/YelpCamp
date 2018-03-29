@@ -19,3 +19,11 @@
     height: 400px;
     width: 100%;
 }
+
+#admin {
+    color: red;
+}
+
+body {
+    background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(237,241,247,1) 49%, rgba(188,224,238,1) 100%);
+}
