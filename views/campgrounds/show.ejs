@@ -12,7 +12,9 @@
     </div>
     <div class="col-md-9">
         <div class="thumbnail">
+            <div class="fullsize">
             <img class="img-responsve" src="<%= campground.image %>" onerror="this.src='https://images.unsplash.com/photo-1483400900607-becbece13e85?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9&s=f52873d3d006fe713e5536a359e23904'">
+            </div>
             <div class="caption-full">
                 <h4 class="pull-right">$<%= Number(campground.price).toFixed(2) %>/night</h4>
                 <h4><a><%= campground.name %></a></h4>
