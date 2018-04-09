@@ -25,11 +25,11 @@ router.get("/", function(req, res) {
 });
 
 // CREATE Route - add new campground to DB
-router.post("/", middleware.isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, middleware.isSafe, function(req, res) {
   // Get all campgrounds from DB
   var name = req.body.name;
   var price = req.body.price;
-  var image = req.body.image ? req.body.image : "https://images.unsplash.com/photo-1483400900607-becbece13e85?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9&s=f52873d3d006fe713e5536a359e23904";
+  var image = req.body.image ? req.body.image : "https://images.unsplash.com/photo-1459909633680-206dc5c67abb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9&s=0d1629bd64022b26db573150fe45c4f4";
   var desc = req.body.description;
   var author = {
       id: req.user._id,
@@ -92,7 +92,7 @@ router.get("/:id/edit", middleware.checkUserCampground, function(req, res) {
 });
 
 // UPDATE CAMPGROUND ROUTE
-router.put("/:id", middleware.checkUserCampground, function(req, res) {
+router.put("/:id", middleware.checkUserCampground, middleware.isSafe, function(req, res) {
     geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
       req.flash('error', 'Invalid address');
