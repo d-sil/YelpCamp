@@ -17,7 +17,7 @@ var indexRoutes      = require("./routes/index"),
     campgroundRoutes = require("./routes/campgrounds");
 
 var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";  // we are exposing our development db, but hiding our production db. the 'or' statement is a good backup in case of an error.   
-mongoose.connect(url);  // we exported the 'DATABASEURL' locally here on c9 to the link above, and also on heroku with our different db from 'mLab'
+mongoose.connect(url);  // we exported the 'DATABASEURL' locally here to the link above, and also on heroku with our different db from 'mLab'
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
