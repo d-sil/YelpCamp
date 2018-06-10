@@ -8,7 +8,9 @@ var express        = require("express"),
     passport       = require("passport"),
     LocalStrategy  = require("passport-local"),
     methodOverride = require("method-override"),  // this will allow us to alter our POST routes (to 'put' 'delete' etc) by using '_method' on our forms
-    User           = require("./models/user");
+    User           = require("./models/user"),
+    favicon        = require("serve-favicon"),
+    path           = require("path");
     //seedDB         = require("./seeds");
 
 // requiring routes    
@@ -22,6 +24,7 @@ mongoose.connect(url);  // we exported the 'DATABASEURL' locally here to the lin
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 app.use(methodOverride("_method"));
 app.use(flash());
 app.locals.moment = require("moment");
